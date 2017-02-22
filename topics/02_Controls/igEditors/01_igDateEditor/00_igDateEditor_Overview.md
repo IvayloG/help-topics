@@ -122,6 +122,42 @@ Supported formats follow the general patterns for [Formatting Dates](Formatting-
 
  >**Note:** The [`dateInputFormat`](%%jQueryApiUrl%%/ui.igdateeditor#options:dateInputFormat) option does not support the short numeric specifiers (such as `"M"` month number without leading zero) for most date parts as they cannot be applied while the value is being edited or yet to be entered. In this case the editor will still provide two prompts for the month, effectively using `"MM"` while editing.
 
+## Configure time editor with spin buttons 
+It is a valid scenario to use [`dateInputFormat`](%%jQueryApiUrl%%/ui.igdateeditor#options:dateInputFormat) containing time portion only and it is applicable for using `igDateEditor` as time editor. In such cases consider adding more functionality like using [`spin buttons`](%%jQueryApiUrl%%/ui.igdateeditor#options:buttonType) as well.
+
+**HTML:**
+
+```html
+<input id="departureTime"/>
+```
+
+**Javascript:**
+
+```js
+<script type="text/javascript">
+    $("#departureTime").igDateEditor({
+        dateInputFormat: "hh:mm",
+        value: new Date(),
+        dataMode: "date",
+        buttonType: "spin",
+        width: 100
+    });
+</script>
+```
+
+**In Razor:**
+
+```csharp
+@(Html.Infragistics().DateEditor()
+    .ID("departureTime")
+    .Width(100)
+    .DateInputFormat("hh:mm")
+    .Value(DateTime.Now)
+    .ButtonType(TextEditorButtonType.Spin)
+    .Render()
+}
+```
+
 This sample shows different configurations for formatting dates and times in the date editor:
 
 <div class="embed-sample">
